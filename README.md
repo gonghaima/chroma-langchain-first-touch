@@ -86,3 +86,17 @@ docs = chroma_db.similarity_search(query)
 ```
 
 Another useful method is similarity_search_with_score, which also returns the similarity score represented as a decimal between 0 and 1. (1 being a perfect match).
+
+Step 5: Query the model
+We have our query and similar documents in hand. Let's send them to the large language model that we defined earlier (in Step 3) as llm.
+
+We're going to use LangChain's RetrievalQA chain and pass in a few parameters as shown below:
+
+```
+chain = RetrievalQA.from_chain_type(llm=llm,
+                                    chain_type="stuff",
+                                    retriever=chroma_db.as_retriever())
+response = chain(query)
+```
+
+What this does is create a chain of type stuff, use our defined llm, and our Chroma vector store as a retriever.
