@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDVq83Q0itPKRSowOwPRxeaKUb-cLCAFLw"  # Replace with your actual Gemini API key
+
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import Chroma
@@ -23,3 +25,6 @@ chroma_db = Chroma.from_documents(
     persist_directory="data", 
     collection_name="lc_chroma_demo"
 )
+
+query = "What is this document about?"
+docs = chroma_db.similarity_search(query)

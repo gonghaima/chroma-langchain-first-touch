@@ -22,10 +22,14 @@
      pip install chromadb langchain pypdf tiktoken python-dotenv langchain-google-genai
      ```
 
+---
+
 # Step 2: Prepare Data
 
 - Download and place your PDF file in a `/data` folder at the root of your project directory.
   Example path: `chroma-langchain-demo/data/document.pdf`
+
+---
 
 # Step 3: Example Usage in `main.py`
 
@@ -53,21 +57,32 @@ chroma_db = Chroma.from_documents(
 )
 ```
 
-# Step 4: .env File
+---
+
+# Step 3.1: .env File
 
 Create a `.env` file in your project root and add:
+
 ```
 GOOGLE_API_KEY=your-gemini-api-key-here
 ```
 
-# Step 5: .gitignore
-
-Add `.env` to your `.gitignore` to keep your API key safe:
-```
-.env
-```
-
 ---
 
-This setup uses Google Gemini for both LLM and embeddings. For OpenAI, update the imports and API key accordingly.
+# Step 4: Perform a similarity search locally
 
+That was easy! Right? One of the benefits of Chroma is how efficient it is when handling large amounts of vector data. For this example, we're using a tiny PDF but in your real-world application, Chroma will have no problem performing these tasks on a lot more embeddings.
+
+Let's perform a similarity search. This simply means that given a query, the database will find similar information from the stored vector embeddings. Let's see how this is done:
+
+```python
+query = "What is this document about?"
+```
+
+We can then use the similarity_search method:
+
+```python
+docs = chroma_db.similarity_search(query)
+```
+
+Another useful method is similarity_search_with_score, which also returns the similarity score represented as a decimal between 0 and 1. (1 being a perfect match).
