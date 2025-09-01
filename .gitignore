@@ -24,3 +24,5 @@ __pycache__/
 # Others
 *.sqlite3
 data/b0c4963f-cb82-4bb1-9ec8-2dd89e9a2560/length.bin
+chroma/b0c4963f-cb82-4bb1-9ec8-2dd89e9a2560/*.bin
+chroma_data/2b7e4c91-450a-40ca-82f7-951f800ffab8/*.bin

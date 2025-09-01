@@ -100,3 +100,18 @@ response = chain(query)
 ```
 
 What this does is create a chain of type stuff, use our defined llm, and our Chroma vector store as a retriever.
+
+# step 5: expore db data
+
+Run ChromaDB server with your data
+If you haven’t already, start a ChromaDB server and set its persist_directory to your data folder:
+
+```
+chroma run
+```
+
+Connect Chroma Explorer to the server
+In Chroma Explorer, set the API endpoint to your local ChromaDB server (e.g., http://localhost:8000).
+
+Explore your database
+Use the Chroma Explorer UI to browse collections, documents, and metadata.
